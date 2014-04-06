@@ -2,7 +2,7 @@
 using System.Collections;
 
 public class detect_player : MonoBehaviour {
-
+	public bool player_hit = false;
 	// Use this for initialization
 	void Start () {
 	
@@ -16,7 +16,7 @@ public class detect_player : MonoBehaviour {
 	{
 		if(other.gameObject.tag=="Player"){
 			//DO SOMETHING IF THE PLAYER HIT THE WALL
-
+			player_hit=true;
 		}
 
 	}
