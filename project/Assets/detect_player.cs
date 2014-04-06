@@ -12,7 +12,7 @@ public class detect_player : MonoBehaviour {
 	void Update () {
 	
 	}
-	void OnTriggerEnter(Collider other)
+	void OnCollisionEnter(Collision other)
 	{
 		if(other.gameObject.tag=="Player"){
 			//DO SOMETHING IF THE PLAYER HIT THE WALL
