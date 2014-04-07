@@ -3,10 +3,13 @@ using System.Collections;
 
 public class player : MonoBehaviour {
 
-	private float steer = 0;
-	private float drunk = 0;
-	public float turn_speed=5;
-	public float forward_speed =5;
+	public float steer = 0;
+	public float bac = 0.5f;
+	public float turn_speed = 20;
+	public float wait = 10;
+	public float turn = 0;
+	public bool jerk = false;
+
 	// Use this for initialization
 	void Start () {
 		Vector3 eulerAngles = transform.rotation.eulerAngles;
@@ -17,30 +20,46 @@ public class player : MonoBehaviour {
 	// Update is called once per frame
 	void Update () 
 	{
-		//float forward_control = Input.GetAxis("Vertical")*forward_speed;
-		float turn_control = Input.GetAxis("Horizontal")*turn_speed;
-		
-		
-		transform.Rotate(0,turn_control,0);
-		
-		rigidbody.position += Vector3.forward * -turn_control;
-		///GetInput();
-	}
-
-	void GetInput()
-	{
-		steer = -Input.GetAxis("Horizontal")*turn_speed;
-	}
-
-	void ApplySteering()
-	{
-		transform.Rotate(0,-steer,0);
-
-		
+		GetInput();
 	}
 
 	void FixedUpdate()
 	{	
 		ApplySteering();
+		UpdateVehicle();
+	}
+
+	void GetInput()
+	{
+		steer = -Input.GetAxis ("Horizontal") * turn_speed;
+	}
+
+	void ApplySteering()
+	{
+		Vector3 move = new Vector3 (0.0f, 0.0f, steer);
+		rigidbody.velocity = move * turn_speed;
+		rigidbody.position = new Vector3 (
+			0.0f,
+			0.0f,
+			Mathf.Clamp(rigidbody.position.z, -10, 10));
+
+		rigidbody.rotation = Quaternion.Euler (0.0f, 0.0f, rigidbody.velocity.x * -1);
+	}
+
+	void UpdateVehicle() {
+		if (wait == 0) {
+			if (Random.value < 0.5) {
+				turn = -0.2f;
+				wait = 10;
+			}
+			else {
+				turn = 0.2f;
+				wait = 10;
+			}
+		}
+		else {
+			rigidbody.position += Vector3.forward * turn;
+			wait--;
+		}
 	}
 }
