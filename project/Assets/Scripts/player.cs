@@ -9,6 +9,7 @@ public class player : MonoBehaviour {
 	public float wait = 10;
 	public float turn = 0;
 	public bool jerk = false;
+	public GameLogicController gameLogicController;
 
 	// Use this for initialization
 	void Start () {

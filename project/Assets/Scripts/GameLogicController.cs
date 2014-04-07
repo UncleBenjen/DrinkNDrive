@@ -44,6 +44,7 @@ public class GameLogicController : MonoBehaviour {
 			if (hour >= mdrinksList[numberOfDrinks-1].Count)
 				hour = mdrinksList[numberOfDrinks-1].Count-1;
 		bac =(float) double.Parse(mdrinksList[numberOfDrinks-1][hour][weight]);
+			bacValue.bac = bac;
 			setColor();
 		}
 	}
