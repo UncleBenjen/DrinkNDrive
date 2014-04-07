@@ -9,13 +9,15 @@ public class player : MonoBehaviour {
 	public float wait = 10;
 	public float turn = 0;
 	public bool jerk = false;
-	public GameLogicController gameLogicController;
+	//public GameLogicController gameLogicController;
 
 	// Use this for initialization
 	void Start () {
 		Vector3 eulerAngles = transform.rotation.eulerAngles;
 		eulerAngles = new Vector3(0, eulerAngles.y, 0);
 		transform.rotation = Quaternion. Euler(eulerAngles);
+		bac = bacValue.bac;
+		Debug.Log (bac);
 	}
 	
 	// Update is called once per frame

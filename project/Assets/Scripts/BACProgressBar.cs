@@ -46,7 +46,7 @@ public class BACProgressBar : MonoBehaviour {
 		if (barShow) {
 			bacLevel.text = "B.A.C: "+gameLogicController.bac.ToString() + " %";
 				}
-
+		bacValue.bac = gameLogicController.bac;
 	}
 	void setColorProgress(){
 		//char c = gameLogicController.color;
