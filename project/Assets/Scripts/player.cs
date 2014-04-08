@@ -53,7 +53,7 @@ public class player : MonoBehaviour {
 
 	void GetInput()
 	{
-		steer = -Input.acceleration.x * turn_speed;
+		steer = -Input.GetAxis("Horizontal") * turn_speed;
 	}
 
 	void ApplySteering()
