@@ -9,6 +9,8 @@ public class player : MonoBehaviour {
 	public float wait = 10;
 	public float turn = 0;
 	public bool jerk = false;
+	public int health = 5;
+	public bool is_hit = false;
 	//public GameLogicController gameLogicController;
 
 	// Use this for initialization
@@ -25,12 +27,28 @@ public class player : MonoBehaviour {
 	void Update () 
 	{
 		GetInput();
+		if(is_hit){
+			health--;
+			is_hit = false;
+		}
+		if(health <= 0){
+			Application.LoadLevel("EndScene");
+		}
 	}
 
 	void FixedUpdate()
 	{	
 		ApplySteering();
 		UpdateVehicle();
+	}
+
+	void OnCollisionEnter(Collision other)
+	{
+		if(other.gameObject.tag=="Obstacle"){
+			//DO SOMETHING IF THE PLAYER HIT THE WALL
+			is_hit=true;
+		}
+		
 	}
 
 	void GetInput()
@@ -66,4 +84,10 @@ public class player : MonoBehaviour {
 			wait--;
 		}
 	}
+	void isDead(){
+		if(health <= 0){
+			Application.LoadLevel("EndScene");
+		}
+	}
+
 }
