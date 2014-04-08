@@ -4,8 +4,8 @@ using System.Collections;
 public class player : MonoBehaviour {
 
 	public float steer = 0;
-	public float bac = 0.5f;
 	public float turn_speed = 20;
+	public float bac = 0;
 	public float wait = 10;
 	public float turn = 0;
 	public bool jerk = false;
@@ -13,6 +13,7 @@ public class player : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		Screen.orientation = ScreenOrientation.LandscapeLeft;
 		Vector3 eulerAngles = transform.rotation.eulerAngles;
 		eulerAngles = new Vector3(0, eulerAngles.y, 0);
 		transform.rotation = Quaternion. Euler(eulerAngles);
@@ -34,7 +35,7 @@ public class player : MonoBehaviour {
 
 	void GetInput()
 	{
-		steer = -Input.GetAxis ("Horizontal") * turn_speed;
+		steer = -Input.acceleration.x * turn_speed;
 	}
 
 	void ApplySteering()
@@ -50,14 +51,14 @@ public class player : MonoBehaviour {
 	}
 
 	void UpdateVehicle() {
-		if (wait == 0) {
+		if (wait < 0) {
 			if (Random.value < 0.5) {
-				turn = -0.2f;
-				wait = 10;
+				turn = -1.0f * bac ;
+				wait = 100 * bac;
 			}
 			else {
-				turn = 0.2f;
-				wait = 10;
+				turn = 1.0f * bac;
+				wait = 100 * bac;
 			}
 		}
 		else {

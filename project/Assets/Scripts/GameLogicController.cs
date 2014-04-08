@@ -26,6 +26,7 @@ public class GameLogicController : MonoBehaviour {
 		
 	// Use this for initialization
 	void Start () {
+		Screen.orientation = ScreenOrientation.LandscapeLeft;
 		numberOfDrinks = 0;
 		nextDecreasee = 0;
 		playClick = false;
