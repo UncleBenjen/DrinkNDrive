@@ -10,7 +10,6 @@ public class destroy : MonoBehaviour {
 	void Start () {
 	
 	}
-	
 	// Update is called once per frame
 	void Update () {
 	
@@ -22,5 +21,6 @@ public class destroy : MonoBehaviour {
 		}
 
 		obstacle_passed++;
+		passed_obstacles.OBSTACLES_PASSED=obstacle_passed;
 	}
 }
