@@ -52,8 +52,8 @@ public class GUITest : MonoBehaviour {
 
 			// ---- go home button
 
-			GUI.Box (new Rect (10, (h/2)+100, 220, 50), "");
-			if (GUI.Button (new Rect (20, (h/2)+110, 190, 20), "Go Home")) {
+			GUI.Box (new Rect (10, (h/2)+100, 210, 50), "");
+			if (GUI.Button (new Rect (20, (h/2)+110, 190, 20), "Drive Home")) {
 				Debug.Log("Drive Home");
 				Application.LoadLevel("drivingGame");
 			}

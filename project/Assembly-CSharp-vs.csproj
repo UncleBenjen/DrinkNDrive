@@ -47,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Scripts\BACProgressBar.cs" />
+     <Compile Include="Assets\Scripts\EndGUI.cs" />
      <Compile Include="Assets\Scripts\GUITest.cs" />
      <Compile Include="Assets\Scripts\GameLogicController.cs" />
      <Compile Include="Assets\Scripts\PlayButton.cs" />
@@ -57,6 +58,7 @@
      <Compile Include="Assets\Scripts\detect_player.cs" />
      <Compile Include="Assets\Scripts\driveGUI.cs" />
      <Compile Include="Assets\Scripts\move_ground.cs" />
+     <Compile Include="Assets\Scripts\passed_obstacles.cs" />
      <Compile Include="Assets\Scripts\player.cs" />
      <Compile Include="Assets\Scripts\spawn_object.cs" />
      <None Include="Assets\Standard Assets (Mobile)\Shaders\Particle Shaders\Mobile Multiply Culled.shader" />
